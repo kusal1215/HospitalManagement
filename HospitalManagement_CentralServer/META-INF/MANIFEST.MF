@@ -4,7 +4,7 @@ Bundle-Name: HospitalManagement_MiddleServer
 Bundle-SymbolicName: HospitalManagement_CentralServer
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: hospitalmanagement_centralserver.Activator
-Bundle-RequiredExecutionEnvironment: JavaSE-15
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: HospitalManagement.MiddleServer
 Import-Package: hospitalmanagement_doctorservice,
  org.osgi.framework;version="1.3.0"
