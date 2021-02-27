@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: HospitalManagement_Patient
+Bundle-SymbolicName: HospitalManagement_Patient
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: hospitalmanagement_patient.Activator
+Bundle-RequiredExecutionEnvironment: JavaSE-15
+Automatic-Module-Name: HospitalManagement.Patient
+Import-Package: hospitalmanagement_centralserver,
+ org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
