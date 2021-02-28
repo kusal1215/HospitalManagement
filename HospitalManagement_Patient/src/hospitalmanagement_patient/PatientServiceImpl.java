@@ -15,8 +15,8 @@ public class PatientServiceImpl implements IPatientService {
 		
 		
 		while(true) {
-			System.out.println("01 - Find Doctors");
-			System.out.println("Please Select a Service");
+			System.out.println("01 - Find Doctors\n02 - Find An Emergancy Service\n03 - Find Lab Service\n0 - Exit\n");
+			System.out.println("Please Select a Service :");
 			
 			try {
 				
@@ -28,7 +28,7 @@ public class PatientServiceImpl implements IPatientService {
 					break;
 				case 0: System.exit(0);
 					break;
-				default:System.out.println("please select one  from the list exit:0");
+				default:System.out.println("####### please select one  from the list #######\n");
 				}
 				
 			} catch (InputMismatchException e) {
