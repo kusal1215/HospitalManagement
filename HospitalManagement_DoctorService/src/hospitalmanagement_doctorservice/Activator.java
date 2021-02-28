@@ -9,14 +9,20 @@ public class Activator implements BundleActivator {
 	ServiceRegistration clientServiceRegistration;
 
 	public void start(BundleContext context) throws Exception {
+		
+		System.out.println("********* Start Doctor Services *********\n");
+		
 		DoctorService doctorService = new DocotorServiceImpl();
 		clientServiceRegistration = context.registerService(DoctorService.class.getName(), doctorService, null);
+		
 	}
 	
 
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("Stopping Hospital Management");
+		
+		System.out.println("********* Stopping Hospital Management *********");
 		clientServiceRegistration.unregister();
+		
 	}
 
 }

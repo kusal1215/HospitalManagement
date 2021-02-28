@@ -2,6 +2,6 @@ package hospitalmanagement_centralserver;
 
 public interface ICentralServer {
 
-	public void handleDocotoService();
-	
+//	Hospital Management Services
+	public void handleDocotoService();	
 }

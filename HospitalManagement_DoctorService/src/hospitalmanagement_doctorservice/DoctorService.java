@@ -8,5 +8,6 @@ public interface DoctorService {
 	public ArrayList<String> getDoctorsBySpecialization(String specialization);
 	
 	public String displaySpecializations();
+	
 
 }

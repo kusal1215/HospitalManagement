@@ -13,16 +13,14 @@ public class DocotorServiceImpl implements DoctorService {
 		
 		doctors.put("Kusal", "Eye Surgeon");
 		doctors.put("Yasasmi", "Cardiologist");
-		doctors.put("Mala Sudusinghe","Eye Surgeon");
-		doctors.put("Mihira Bandara","Surgeon");
-		doctors.put("Imantha De Silva","Cardiologist");
+		doctors.put("oshadi","Eye Surgeon");
+		doctors.put("kamal Bandara","Physician");
+		doctors.put("rashmika De Silva","Cardiologist");
 		doctors.put("Visaka Rathnamalala","Hematologists");
-		doctors.put("Manel Dissanayake","Dermatologist");
-		doctors.put("Duminda Ariyarathne","Surgeon");
+		doctors.put("Sunil Dissanayake","Dermatologist");
+		doctors.put("Kisal Ariyarathne","Surgeon");
 		doctors.put("Suresh Kottegoda","Cardiologist");
-		doctors.put("Dharshan De silva","Physician");
-		doctors.put("Anoma Abeygunawardhana","Pediatricians");
-		doctors.put("A Shanthakumar","Neurologists");
+		
 	}
 	
 
@@ -40,6 +38,7 @@ public class DocotorServiceImpl implements DoctorService {
 		}
 		return  result;
 	}
+	
 
 	public String displaySpecializations() {
 		
@@ -52,4 +51,5 @@ public class DocotorServiceImpl implements DoctorService {
 				+ "Pediatricians\n"
 				+ "Neurologists\n";
 	}
+	
 }
