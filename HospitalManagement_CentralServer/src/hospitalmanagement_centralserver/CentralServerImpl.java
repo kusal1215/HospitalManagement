@@ -7,6 +7,8 @@ import hospitalmanagement_doctorservice.DocotorServiceImpl;
 import hospitalmanagement_doctorservice.DoctorService;
 import hospitalmanagement_inventoryservice.IInventoryService;
 import hospitalmanagement_inventoryservice.InventoryServiceImpl;
+import hospitalmanagement_laboratoryservice.ILaboratoryService;
+import hospitalmanagement_laboratoryservice.laboratoryServcieImpl;
 import hotelmanagement_emergencyservice.IEmerencyService;
 import hotelmanagement_emergencyservice.IEmerencyServiceImpl;
 
@@ -17,7 +19,7 @@ public class CentralServerImpl implements ICentralServer {
 	DoctorService doctorService = new DocotorServiceImpl();
 	IEmerencyService emerencyService = new IEmerencyServiceImpl();
 	IInventoryService inventoryService= new InventoryServiceImpl() ;
-		
+	ILaboratoryService iLaboratoryService = new laboratoryServcieImpl();
 	
 	
 	Scanner sc = new Scanner(System.in);
@@ -76,6 +78,50 @@ public class CentralServerImpl implements ICentralServer {
 	public void getInventoryWithLessItems() {
 		// TODO Auto-generated method stub
 		inventoryService.getInventoryWithLessItems();
+		
+	}
+
+	@Override
+	public void handleLabService() {
+		iLaboratoryService.DisplayLaboratories();
+		
+		System.out.print("Please select an area: ");
+		String area = sc.next();
+
+		ArrayList<String> labs = iLaboratoryService.getNearByLab(area);
+
+		for (String lab : labs) {
+			System.out.println(lab+"\n");
+		}
+	}
+
+	@Override
+	public void GetReports() {
+		System.out.print("Please select Report status: "); String status = sc.next();
+		  
+		  ArrayList<String> Reportstatus = iLaboratoryService.GetReportStatus(status);
+		  for (String Reportlist : Reportstatus) { System.out.println(Reportlist);
+		  
+		  }
+		
+	}
+
+	@Override
+	public void AddReport() {
+		System.out.print("Enter report: ");
+		String name = sc.nextLine();
+		System.out.print("Enter status: ");
+		String status = sc.nextLine();
+		
+		iLaboratoryService.AddReport(name, status);
+		
+	}
+
+	@Override
+	public void DeleteReport() {
+		System.out.print("Enter report: ");
+		String ReportName = sc.nextLine();
+		iLaboratoryService.DeleteReport(ReportName);
 		
 	}
 

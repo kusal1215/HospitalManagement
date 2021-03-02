@@ -13,4 +13,11 @@ public interface ICentralServer {
 	public void addInventory();
 	public void getInventoryItemAndReduceInventoryItem();
 	public void getInventoryWithLessItems();
+	
+//	Laboratory Management Services
+	public void handleLabService();
+	
+	public void GetReports(); 
+	public void AddReport();
+	public void DeleteReport();
 }
