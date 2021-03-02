@@ -5,13 +5,20 @@ import java.util.Scanner;
 
 import hospitalmanagement_doctorservice.DocotorServiceImpl;
 import hospitalmanagement_doctorservice.DoctorService;
+import hospitalmanagement_inventoryservice.IInventoryService;
+import hospitalmanagement_inventoryservice.InventoryServiceImpl;
 import hotelmanagement_emergencyservice.IEmerencyService;
 import hotelmanagement_emergencyservice.IEmerencyServiceImpl;
 
 public class CentralServerImpl implements ICentralServer {
+	
+	
 
 	DoctorService doctorService = new DocotorServiceImpl();
 	IEmerencyService emerencyService = new IEmerencyServiceImpl();
+	IInventoryService inventoryService= new InventoryServiceImpl() ;
+		
+	
 	
 	Scanner sc = new Scanner(System.in);
 
@@ -43,6 +50,33 @@ public class CentralServerImpl implements ICentralServer {
 						
 			System.out.println(userInput + " Emergency serivce Contact No:" + contactNumber + "\n");
 		}
+	}
+
+	@Override
+	public void DisplayAvailableInventory() {
+		// TODO Auto-generated method stub
+		
+		inventoryService.DisplayAvailableInventory();
+	}
+
+	@Override
+	public void addInventory() {
+		// TODO Auto-generated method stub
+		inventoryService.addInventory();
+	}
+
+	@Override
+	public void getInventoryItemAndReduceInventoryItem() {
+		// TODO Auto-generated method stub
+		inventoryService.getInventoryItemAndReduceInventoryItem();
+		
+	}
+
+	@Override
+	public void getInventoryWithLessItems() {
+		// TODO Auto-generated method stub
+		inventoryService.getInventoryWithLessItems();
+		
 	}
 
 }

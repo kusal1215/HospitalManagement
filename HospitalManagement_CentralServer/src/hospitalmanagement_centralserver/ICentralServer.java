@@ -7,4 +7,10 @@ public interface ICentralServer {
 	
 //	Emergency Managemnet Services
 	public void handleEmergencyService();
+	
+//  Inventory Management Services	
+	public void DisplayAvailableInventory();
+	public void addInventory();
+	public void getInventoryItemAndReduceInventoryItem();
+	public void getInventoryWithLessItems();
 }
