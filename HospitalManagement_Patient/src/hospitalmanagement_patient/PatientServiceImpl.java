@@ -26,6 +26,8 @@ public class PatientServiceImpl implements IPatientService {
 				
 				case 1:iCentralServer.handleDocotoService();
 					break;
+				case 2:iCentralServer.handleEmergencyService();
+					break;	
 				case 0: System.exit(0);
 					break;
 				default:System.out.println("####### please select one  from the list #######\n");
