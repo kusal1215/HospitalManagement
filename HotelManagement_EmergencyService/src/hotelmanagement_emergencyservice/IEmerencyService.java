@@ -8,4 +8,8 @@ public interface IEmerencyService {
 	
 	public String displayZones();
 	
+	public void addEmergencyDriver();
+	
+	public void DeleteEmergencyDriver(String name);
+	
 }

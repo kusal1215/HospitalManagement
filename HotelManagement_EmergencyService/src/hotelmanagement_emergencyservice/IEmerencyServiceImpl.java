@@ -3,10 +3,15 @@ package hotelmanagement_emergencyservice;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class IEmerencyServiceImpl implements IEmerencyService {
 	
 	private HashMap<String, String> zones = new HashMap<String, String>();
+	
+	private HashMap<String, String> emergency_drivers = new HashMap<String, String>();
+	
+	Scanner sc = new Scanner(System.in);
 	
 	public IEmerencyServiceImpl() {
 		// TODO Auto-generated constructor stub
@@ -49,5 +54,31 @@ public class IEmerencyServiceImpl implements IEmerencyService {
 		+ "colombo6\n";
 		
 	}
+	
+	@Override
+	public void addEmergencyDriver() {
+		// TODO Auto-generated method stub
+		
+		System.out.print("Enter Full name : ");
+		String fName = sc.nextLine();
+		System.out.print("Enter Driving License Number : ");
+		String dLicense = sc.nextLine();
+		
+		emergency_drivers.put(fName,dLicense);
+		
+		System.out.println("********New Driver Details Succesfully added********\n" +"full name :"+fName +"\n"+"License No:"+ dLicense );
+	}
 
+	
+	@Override
+	public void DeleteEmergencyDriver(String name) {
+		
+		try {
+			emergency_drivers.remove(name);
+			System.out.println("'" +name + "'" +"this user deleted");
+		} catch (Exception e) {
+			System.out.println("Invalide Driver");
+		}
+
+	}
 }

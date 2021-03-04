@@ -55,6 +55,24 @@ public class CentralServerImpl implements ICentralServer {
 	}
 
 	@Override
+	public void addEmergencyDriver() {
+		// TODO Auto-generated method stub
+		emerencyService.addEmergencyDriver();
+		
+	}
+	
+	
+	@Override
+	public void DeleteEmergencyDriver() {
+		// TODO Auto-generated method stub
+		System.out.print("Enter name: ");
+		String DriverName = sc.nextLine();
+		emerencyService.DeleteEmergencyDriver(DriverName);
+		
+	}
+	
+	
+	@Override
 	public void DisplayAvailableInventory() {
 		// TODO Auto-generated method stub
 		

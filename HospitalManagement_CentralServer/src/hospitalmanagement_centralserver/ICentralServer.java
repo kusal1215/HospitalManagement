@@ -5,8 +5,10 @@ public interface ICentralServer {
 //	Hospital(doctor) Management Services
 	public void handleDocotoService();	
 	
-//	Emergency Managemnet Services
+//	Emergency Management Services
 	public void handleEmergencyService();
+	public void addEmergencyDriver();
+	public void DeleteEmergencyDriver();
 	
 //  Inventory Management Services	
 	public void DisplayAvailableInventory();
