@@ -37,6 +37,25 @@ public class CentralServerImpl implements ICentralServer {
 		for (String name : doctorList) {
 			System.out.println("Dr." + name + "\n");
 		}
+		
+		System.out.println("Enter the doctor name that you need to check Availability :");
+		
+		String dconameInput = sc.next();
+		
+		ArrayList<String> doctorTimeSlotList = doctorService.displayDoctorsAvailableTime(dconameInput);
+		
+		for (String time_slot : doctorTimeSlotList) {
+			System.out.println("Dr. "+ dconameInput +" Available At "+ time_slot);
+			System.out.println("Contact Front Desk to Make An Appointment : 01119502049 \n");
+		}
+		
+	}
+	
+	@Override
+	public void addDoctortoSystem() {
+		// TODO Auto-generated method stub
+		doctorService.addDoctortoSystem();;
+		
 	}
 	
 	public void handleEmergencyService() {

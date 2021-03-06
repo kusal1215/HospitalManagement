@@ -3,7 +3,8 @@ package hospitalmanagement_centralserver;
 public interface ICentralServer {
 
 //	Hospital(doctor) Management Services
-	public void handleDocotoService();	
+	public void handleDocotoService();
+	public void addDoctortoSystem();
 	
 //	Emergency Management Services
 	public void handleEmergencyService();

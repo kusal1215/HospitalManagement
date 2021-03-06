@@ -10,7 +10,7 @@ public class Activator implements BundleActivator {
 
 	public void start(BundleContext context) throws Exception {
 		
-		System.out.println("********* Start Doctor Services *********\n");
+		System.out.println("********* Start Hospital Services *********\n");
 		
 		DoctorService doctorService = new DocotorServiceImpl();
 		clientServiceRegistration = context.registerService(DoctorService.class.getName(), doctorService, null);

@@ -141,6 +141,35 @@ public class EmployeeServiceImpl implements IEmployee_Service {
 				}
 			}
 			
+			else if(uname.equalsIgnoreCase("Doctor") && pwd.equals("doctor@123")) {
+				while (true) {	
+					
+					scn =  new Scanner(System.in);
+				
+					System.out.println();
+					System.out.println("1 : add a Docotr to system");
+//					System.out.println("2 : delete driver");
+					System.out.println("0 : Exit");
+					System.out.print("Choose the service you need : ");
+				
+				
+					try {
+						choice = scn.nextInt();
+					
+						switch(choice) {
+							case 1 : iCentralServer.addDoctortoSystem(); break;
+//							case 2 : iCentralServer.DeleteEmergencyDriver();break;
+							case 0 : System.exit(0); break;
+							default: System.out.println("Select a Number from the List");
+						
+						}
+					}catch (InputMismatchException e) {
+						System.out.println("Invalid Input");
+				
+					}
+				}
+			}
+			
 			else {
 				System.out.println("Incorrect user name and/or password\n");
 			
