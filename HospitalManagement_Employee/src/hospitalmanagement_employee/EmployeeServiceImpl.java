@@ -57,6 +57,7 @@ public class EmployeeServiceImpl implements IEmployee_Service {
 					System.out.println();
 					System.out.println("1 : Get the drugs with stock less than 500.0g");
 					System.out.println("2 : Add new drugs to the stock");
+					System.out.println("3 : Delete drugs from the stock");
 					System.out.println("0 : Exit");
 					System.out.print("Choose the service you need : ");
 				
@@ -67,6 +68,7 @@ public class EmployeeServiceImpl implements IEmployee_Service {
 						switch(choice) {
 							case 1 : iCentralServer.getInventoryWithLessItems(); break;
 							case 2 : iCentralServer.addInventory();break;
+							case 3 : iCentralServer.DeleteItems();break;
 							case 0 : System.exit(0); break;
 							default: System.out.println("Select a Number from the List");
 						

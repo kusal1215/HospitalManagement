@@ -1,5 +1,6 @@
 package hospitalmanagement_inventoryservice;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -9,14 +10,14 @@ import java.util.Scanner;
  *
  */
 public class InventoryServiceImpl implements IInventoryService {
-	
+
 	HashMap<String, Float> inventoryQuantity = new HashMap<String, Float>();
-	
+	HashMap<String, String> drugCategory = new HashMap<String, String>();
+
 	Scanner scn = new Scanner(System.in);
-	
-	
+
 	public InventoryServiceImpl() {
-		
+
 		inventoryQuantity.put("Amoxicillin", (float) 800.0);
 		inventoryQuantity.put("Benthyl", (float) 400.0);
 		inventoryQuantity.put("Cetirizine", (float) 625.0);
@@ -24,90 +25,144 @@ public class InventoryServiceImpl implements IInventoryService {
 		inventoryQuantity.put("Heparin", (float) 1000.0);
 		inventoryQuantity.put("Motrin", (float) 200.0);
 		inventoryQuantity.put("Rituxan", (float) 1120.0);
-		
+
+		drugCategory.put("Wellwoman 50+ 30's - Rs.3300.00", "NUTRACEUTICALS");
+		drugCategory.put("Wellwoman sport & fitness - Rs.3,065.00", "NUTRACEUTICALS");
+		drugCategory.put("Ultra Vitamin D3 96's - Rs.1,824.00", "NUTRACEUTICALS");
+
+		drugCategory.put("Ayurveda Immunity Booster Pack - Rs.950.00", "AYURVEDA");
+		drugCategory.put("Dum Hattiya  - Rs.560.00", "AYURVEDAL");
+		drugCategory.put("Peenus Thailaya - Rs.950.00", "AYURVEDA");
+
+		drugCategory.put("Cow & Gate Next Steps 4 350g - Rs.990.00", "BABYCARE");
+		drugCategory.put("Tiki Baby Bubbly Bunty Cologne 100ml - Rs.260.00", "BABYCARE");
+		drugCategory.put("Bambi premium care X-Large 4s - Rs.200.00", "BABYCARE");
+
+		drugCategory.put("Facia Day Cream Advanced Skin Whitening Formula 50g - Rs.720.00", "PersonalCare");
+		drugCategory.put("Genove Pilopeptan Anti Hair Loss Shampoo 250Ml - Rs.4,940.00", "PersonalCare");
+		drugCategory.put("SLC FACE WASH 50G - Rs.865.00", "PersonalCare");
+
+		drugCategory.put("Bones -Up 200g - Rs.800.00", "PetCare");
+		drugCategory.put("Red Dogs 200ml - Rs.865.00", "PetCare");
+		drugCategory.put("Chicken Liver Bites - Rs.700.00", "PetCare");
+
 	}
 
-
-	
 	@Override
 	public void DisplayAvailableInventory() {
 		// TODO Auto-generated method stub
-		
-		System.out.println("Available Inventory "+"\n");
-		for(Map.Entry<String, Float> Inventory : inventoryQuantity.entrySet()) {
+
+		System.out.println("Available Inventory " + "\n");
+		for (Map.Entry<String, Float> Inventory : inventoryQuantity.entrySet()) {
 			System.out.println(Inventory.getKey());
 		}
+
+	}
+	
+	@Override
+	public void DisplayCategories() {
+		System.out.println("Available Categories " + "\n");
+		System.out.println("\nNUTRACEUTICALS\nAYURVEDAL\nBABYCARE\nPersonalCare\nPetCare\n");
+		/*
+		 * for (Map.Entry<String, String> drug : drugCategory.entrySet()) {
+		 * System.out.println(drug.getValue()); }
+		 */
 		
 	}
-
-
 
 	@Override
 	public void addInventory() {
 		// TODO Auto-generated method stub
-		
+
 		System.out.print("Enter drug name : ");
 		String _sDname = scn.nextLine();
 		System.out.print("Enter quantity : ");
 		Float addinventory = scn.nextFloat();
-		
-		inventoryQuantity.put(_sDname,addinventory);
-		
-		System.out.println("New drug " +_sDname+" is added to the stock with a quantity of : " +addinventory);
+
+		inventoryQuantity.put(_sDname, addinventory);
+
+		System.out.println("New drug " + _sDname + " is added to the stock with a quantity of : " + addinventory + "g");
 //		System.out.println("\n");
 	}
-
-
 
 	@Override
 	public void getInventoryItemAndReduceInventoryItem() {
 		// TODO Auto-generated method stub
-		
+		float qty = 0;
 		scn = new Scanner(System.in);
-		
-		System.out.print("Choose drug with quantity needed : ");
+
+		/*
+		 * System.out.print("Choose drug with quantity needed : "); String drugName =
+		 * scn.nextLine(); Float quantity = scn.nextFloat();
+		 */
+
+		System.out.print("Choose drug: ");
 		String drugName = scn.nextLine();
+
+		for (Map.Entry<String, Float> Name : inventoryQuantity.entrySet()) {
+			if (Name.getKey().contains(drugName)) {
+				qty = Name.getValue();
+			}
+		}
+
+		System.out.print("quantity needed (" + qty + "g): ");
 		Float quantity = scn.nextFloat();
-		
-		for(Map.Entry<String, Float> inventoryItemAndReduceInventoryItem : inventoryQuantity.entrySet()) {
-			if(inventoryItemAndReduceInventoryItem.getKey().contains(drugName)) {
-				if(inventoryItemAndReduceInventoryItem.getValue() >= quantity) {
+
+		for (Map.Entry<String, Float> inventoryItemAndReduceInventoryItem : inventoryQuantity.entrySet()) {
+			if (inventoryItemAndReduceInventoryItem.getKey().contains(drugName)) {
+				if (inventoryItemAndReduceInventoryItem.getValue() >= quantity) {
 					inventoryQuantity.replace(drugName, inventoryItemAndReduceInventoryItem.getValue() - quantity);
-					System.out.println(drugName+" is successfully taken out");
+					System.out.println(drugName + " (" + quantity + "g) is successfully taken out" + "\n");
+					System.out.println("Avelable Quantity: " + (qty - quantity) + "g");
 					return;
-				}
-				else {
+				} else {
 					System.out.println("No enough stock");
 					return;
 				}
 			}
 		}
-		
+
 		System.out.println("Invalid Drug Name");
-		
+
 	}
-
-
 
 	@Override
 	public void getInventoryWithLessItems() {
 		// TODO Auto-generated method stub
-		for(Map.Entry<String, Float>inventoryWithLessItems : inventoryQuantity.entrySet()) {
-			if(inventoryWithLessItems.getValue() < 500.0) {
+		for (Map.Entry<String, Float> inventoryWithLessItems : inventoryQuantity.entrySet()) {
+			if (inventoryWithLessItems.getValue() < 500.0) {
 				System.out.println(inventoryWithLessItems.getKey());
 			}
-			
+
 		}
 //		System.out.println("\n");
-		
+
 	}
 
+	@Override
+	public ArrayList<String> GetPhamacyDrugList(String Name) {
+		// Creating an arraylist to store reports status
+		ArrayList<String> name = new ArrayList<String>();
 
+		// Get reports status
+		for (Map.Entry<String, String> DrugList : drugCategory.entrySet()) {
+			if (DrugList.getValue().equalsIgnoreCase(Name)) {
+				name.add(DrugList.getKey());
+			}
+		}
 
-	
+		return name;
+	}
 
-
-
+	@Override
+	public void DeleteDrugs(String Name) {
+		try {
+			drugCategory.remove(Name);
+		} catch (Exception e) {
+			System.out.println("Invalide Entry");
+		}
+		
+	}
 
 
 

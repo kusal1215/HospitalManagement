@@ -17,6 +17,9 @@ public interface ICentralServer {
 	public void getInventoryItemAndReduceInventoryItem();
 	public void getInventoryWithLessItems();
 	
+	public void getDrugList();
+	public void DeleteItems();
+	
 //	Laboratory Management Services
 	public void handleLabService();
 	
