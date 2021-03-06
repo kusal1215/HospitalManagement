@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 import hospitalmanagement_doctorservice.DocotorServiceImpl;
 import hospitalmanagement_doctorservice.DoctorService;
+import hospitalmanagement_emergencyservice.IEmerencyService;
+import hospitalmanagement_emergencyservice.IEmerencyServiceImpl;
 import hospitalmanagement_inventoryservice.IInventoryService;
 import hospitalmanagement_inventoryservice.InventoryServiceImpl;
 import hospitalmanagement_laboratoryservice.ILaboratoryService;
 import hospitalmanagement_laboratoryservice.laboratoryServcieImpl;
-import hotelmanagement_emergencyservice.IEmerencyService;
-import hotelmanagement_emergencyservice.IEmerencyServiceImpl;
 
 public class CentralServerImpl implements ICentralServer {
 	
@@ -70,6 +70,17 @@ public class CentralServerImpl implements ICentralServer {
 		for (String contactNumber : emegencyList) {
 						
 			System.out.println(userInput + " Emergency serivce Contact No:" + contactNumber + "\n");
+		}
+		
+		System.out.println("Enter the Contact Number for extra details :");
+		
+		String Enumber = sc.next();
+		
+		ArrayList<String> emergencyDriverDetailstList = emerencyService.getExtraDetails(Enumber);
+		
+		for (String driver_details : emergencyDriverDetailstList) {
+			System.out.println(" details regarding "+ Enumber +"\n" + driver_details + "\n");
+
 		}
 	}
 

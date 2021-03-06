@@ -1,4 +1,4 @@
-package hotelmanagement_emergencyservice;
+package hospitalmanagement_emergencyservice;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +9,10 @@ public class IEmerencyServiceImpl implements IEmerencyService {
 	
 	private HashMap<String, String> zones = new HashMap<String, String>();
 	
+	private HashMap<String, String> extra_details = new HashMap<String, String>();
+	
 	private HashMap<String, String> emergency_drivers = new HashMap<String, String>();
+	
 	
 	Scanner sc = new Scanner(System.in);
 	
@@ -22,7 +25,11 @@ public class IEmerencyServiceImpl implements IEmerencyService {
 		zones.put("114","Colombo4");
 		zones.put("115","Colombo5");
 		
-		
+		extra_details.put("Deiver Name: S.S.kularathna\n HaveSpecial Nurse: Yes ", "111");
+		extra_details.put("Deiver Name: M.L. Nimal\n HaveSpecial Nurse: No ", "112");
+		extra_details.put("Deiver Name: Mahesh Piyalapitiya\n HaveSpecial Nurse: Yes ","113");
+		extra_details.put("Deiver Name: S.L. Kantha\n HaveSpecial Nurse: Yes ","114");
+		extra_details.put("Deiver Name: Siriwardana D.L\n HaveSpecial Nurse: No ","115");
 	}
 
 	@Override
@@ -34,6 +41,23 @@ public class IEmerencyServiceImpl implements IEmerencyService {
 		for(Map.Entry<String, String> emergency : zones.entrySet()) {
 			
 			if(emergency.getValue().equalsIgnoreCase(zone)) {
+				
+				result.add(emergency.getKey());
+			}
+		}
+
+		return  result;
+	}
+	
+	@Override
+	public ArrayList<String> getExtraDetails(String number) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<String> result = new ArrayList<String>();
+		
+		for(Map.Entry<String, String> emergency : extra_details.entrySet()) {
+			
+			if(emergency.getValue().equalsIgnoreCase(number)) {
 				
 				result.add(emergency.getKey());
 			}

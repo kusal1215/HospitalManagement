@@ -1,4 +1,4 @@
-package hotelmanagement_emergencyservice;
+package hospitalmanagement_emergencyservice;
 
 import java.util.ArrayList;
 
@@ -11,5 +11,7 @@ public interface IEmerencyService {
 	public void addEmergencyDriver();
 	
 	public void DeleteEmergencyDriver(String name);
+	
+	public ArrayList<String> getExtraDetails(String number);
 	
 }

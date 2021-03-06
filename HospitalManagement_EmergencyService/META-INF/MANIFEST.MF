@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: HotelManagement_EmergencyService
-Bundle-SymbolicName: HotelManagement_EmergencyService
+Bundle-SymbolicName: HospitalManagement_EmergencyService
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: hotelmanagement_emergencyservice.EmergencyActivator
+Bundle-Activator: hospitalmanagement_emergencyservice.EmergencyActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: HotelManagement_EmergencyService
 Import-Package: org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy
-Export-Package: hotelmanagement_emergencyservice
+Export-Package: hospitalmanagement_emergencyservice
