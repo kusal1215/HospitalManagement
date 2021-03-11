@@ -45,8 +45,7 @@ public class AgentServiceImpl implements IAgentService {
 				while (true) {
 					System.out.println();
 					System.out.println("1 : Get the Reports");
-					System.out.println("2 : Add new Report");
-					System.out.println("3 : Delete Report");
+					System.out.println("2 : Update Report Status");
 					System.out.println("0 : Exit");
 					System.out.print("Choose the service you need : ");
 
@@ -54,19 +53,17 @@ public class AgentServiceImpl implements IAgentService {
 						choice = scn.nextInt();
 
 						switch (choice) {
-						/*
-						 * case 1 : iCentralServer.getDrugsWithLessStock(); break; case 2 :
-						 * iCentralServer.addDrugsWithStock();break;
-						 */
 						case 0:
 							System.exit(0);
 							break;
 						case 1:
 							iCentralServer.GetReports();break;
 						case 2:
-							iCentralServer.AddReport();break;
-						case 3:
-							iCentralServer.DeleteReport();break;
+							iCentralServer.UpdateReport();break;
+						/*
+						 * case 2: iCentralServer.AddReport();break; case 3:
+						 * iCentralServer.DeleteReport();break;
+						 */
 						default:
 							System.out.println("Select a Number from the List");
 

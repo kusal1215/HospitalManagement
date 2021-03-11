@@ -153,6 +153,9 @@ public class CentralServerImpl implements ICentralServer {
 	}
 
 	
+	
+	
+	//Laboratory Service
 	@Override
 	public void handleLabService() {
 		iLaboratoryService.DisplayLaboratories();
@@ -170,7 +173,7 @@ public class CentralServerImpl implements ICentralServer {
 	@Override
 	public void GetReports() {
 		
-		System.out.print("Please select Report status: ");
+		System.out.print("Please select Report status (Delivered/ Not-Delivered): ");
 		String status = sc.next();
 
 		ArrayList<String> Reportstatus = iLaboratoryService.GetReportStatus(status);
@@ -185,7 +188,7 @@ public class CentralServerImpl implements ICentralServer {
 	public void AddReport() {
 		System.out.print("Enter report: ");
 		String name = sc.nextLine();
-		System.out.print("Enter status: ");
+		System.out.print("Enter status (Delivered/ Not-Delivered): ");
 		String status = sc.nextLine();
 
 		iLaboratoryService.AddReport(name, status);
@@ -198,6 +201,16 @@ public class CentralServerImpl implements ICentralServer {
 		String ReportName = sc.nextLine();
 		iLaboratoryService.DeleteReport(ReportName);
 
+	}
+
+	@Override
+	public void UpdateReport() {
+		System.out.print("Enter report: ");
+		String ReportName = sc.nextLine();
+		System.out.print("Status (Delivered/ Not-Delivered): ");
+		String ReportStatus = sc.nextLine();
+		iLaboratoryService.UpdateReportStatus(ReportName, ReportStatus);
+		
 	}
 
 	

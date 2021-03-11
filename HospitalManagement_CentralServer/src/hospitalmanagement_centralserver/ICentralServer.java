@@ -26,4 +26,5 @@ public interface ICentralServer {
 	public void GetReports(); 
 	public void AddReport();
 	public void DeleteReport();
+	public void UpdateReport();
 }

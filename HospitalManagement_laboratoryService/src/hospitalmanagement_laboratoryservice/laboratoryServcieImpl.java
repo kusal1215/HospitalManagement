@@ -64,7 +64,7 @@ public class laboratoryServcieImpl implements ILaboratoryService {
 	}
 
 	
-//	new method
+
 	@Override
 	public ArrayList<String> GetReportStatus(String status) {
 		//Creating an arraylist to store reports status
@@ -86,7 +86,8 @@ public void AddReport(String name, String Status) {
 	ReportsDelivery.put(name, Status);
 	
 	System.out.println("New report " +name+" is added with the status of : " +Status);
-	//	System.out.println("\n");	
+	//	System.out.println("\n");
+	System.out.println("\n------------------Report List--------------------");
 	for(Map.Entry<String, String> ReportList : ReportsDelivery.entrySet()) {
 		System.out.println("Name: " + ReportList.getKey() + "\nStatus: " + ReportList.getValue() + "\n\n");
 	}
@@ -97,10 +98,28 @@ public void DeleteReport(String name) {
 	
 	try {
 		ReportsDelivery.remove(name);
+		System.out.println("Successfully deleted the " +name+ " report ");
 	} catch (Exception e) {
 		System.out.println("Invalide Entry");
 	}
 
+}
+
+@Override
+public void UpdateReportStatus(String name, String Status) {
+	try {
+		for(Map.Entry<String, String> UpdatedReport : ReportsDelivery.entrySet()) {
+			if (UpdatedReport.getKey().contains(name)) {
+				ReportsDelivery.replace(name, Status);
+			}
+		}
+		
+		System.out.println("Successfully Updated");
+		
+	} catch (Exception e) {
+		System.out.println("Invalide Entry");
+	}
+	
 }
 
 	

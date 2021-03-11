@@ -114,6 +114,43 @@ public class EmployeeServiceImpl implements IEmployee_Service {
 					}
 				}
 			}
+			else if(uname.equalsIgnoreCase("LabAssist") && pwd.equals("lab@123"))
+			{
+			
+			while(true) {
+					
+					scn =  new Scanner(System.in);
+					
+					System.out.println();
+					System.out.println("1 : Add Reoprt Details ");
+					System.out.println("2 : Delete Reoprt Details ");
+					System.out.println("0 : Exit");
+					
+					System.out.print("Choose the service : ");
+					
+					try {
+						
+						int iInput = scn.nextInt();
+						
+						switch(iInput) {
+							
+							case 0:	System.exit(0);
+									break;
+							
+							case 1:
+								iCentralServer.AddReport();break;
+							case 2:
+								iCentralServer.DeleteReport();break;
+								
+							default:System.out.println("Please select a number from the list");
+						}
+								
+					} catch (InputMismatchException e) {
+						// TODO: handle exception
+						System.out.println("Invalid Input");
+					}
+				}
+			}
 			else if(uname.equalsIgnoreCase("Emergency") && pwd.equals("emergency@123")) {
 				while (true) {	
 					
