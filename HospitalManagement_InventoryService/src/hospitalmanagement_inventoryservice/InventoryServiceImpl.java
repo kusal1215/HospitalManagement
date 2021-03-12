@@ -158,9 +158,14 @@ public class InventoryServiceImpl implements IInventoryService {
 	@Override
 	public void DeleteDrugs(String Name) {
 		try {
-			drugCategory.remove(Name);
-			System.out.println(Name + " is successfully deleted" + "\n");
-			
+			if (inventoryQuantity.containsKey(Name)) {
+				
+				inventoryQuantity.remove(Name);
+				System.out.println(Name + " is successfully deleted" + "\n");
+				
+			}else {
+				System.out.println("Invalid Drug");
+			}
 		} catch (Exception e) {
 			System.out.println("Invalid Entry");
 		}

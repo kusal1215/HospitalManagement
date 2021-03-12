@@ -165,6 +165,8 @@ public class CentralServerImpl implements ICentralServer {
 
 		ArrayList<String> labs = iLaboratoryService.getNearByLab(area);
 
+		System.out.println("---------------Available laboratory in " + area + "-------------------");
+		
 		for (String lab : labs) {
 			System.out.println(lab + "\n");
 		}
@@ -172,25 +174,45 @@ public class CentralServerImpl implements ICentralServer {
 
 	@Override
 	public void GetReports() {
-		
-		System.out.print("Please select Report status (Delivered/ Not-Delivered): ");
-		String status = sc.next();
-
-		ArrayList<String> Reportstatus = iLaboratoryService.GetReportStatus(status);
-		for (String Reportlist : Reportstatus) {
-			System.out.println(Reportlist);
-
+		try {
+			System.out.print("Please select Report status (Delivered/ Not-Delivered): ");
+			String status = sc.next();
+			
+			if (status.equalsIgnoreCase("Delivered") || status.equalsIgnoreCase("Not-Delivered")) {
+				ArrayList<String> Reportstatus = iLaboratoryService.GetReportStatus(status);
+				for (String Reportlist : Reportstatus) {
+					System.out.println(Reportlist);
+				}					
+			}
+			else {
+				System.out.println("Invalid Status");
+			}
+		} catch (Exception e) {
+			System.out.println("Invalid Status");
 		}
 
 	}
 
 	@Override
 	public void AddReport() {
+		
+		String status = null;
+
 		System.out.print("Enter report: ");
 		String name = sc.nextLine();
-		System.out.print("Enter status (Delivered/ Not-Delivered): ");
-		String status = sc.nextLine();
-
+		System.out.println("Please enter status\t01 - Delivered \n\t\t\t02 - Not-Delivered");
+		System.out.print("Status: ");
+		String statusnum = sc.nextLine();
+		
+		if (statusnum.contentEquals("1")) {
+			status = "Delivered";
+		}
+		else if (statusnum.contentEquals("2")) {
+			status = "Not-Delivered";
+		} else {
+			System.out.println("Invalid number");
+		}
+		
 		iLaboratoryService.AddReport(name, status);
 
 	}
@@ -205,10 +227,23 @@ public class CentralServerImpl implements ICentralServer {
 
 	@Override
 	public void UpdateReport() {
+		String ReportStatus = null;
+		
 		System.out.print("Enter report: ");
 		String ReportName = sc.nextLine();
-		System.out.print("Status (Delivered/ Not-Delivered): ");
-		String ReportStatus = sc.nextLine();
+		System.out.println("Please enter status\t01 - Delivered \n\t\t\t02 - Not-Delivered");
+		System.out.print("Status: ");
+		int ReportStatusNum = sc.nextInt();
+		
+		if (ReportStatusNum == 1) {
+				ReportStatus = "Delivered";
+		}
+		else if (ReportStatusNum == 2) {
+			ReportStatus = "Not-Delivered";
+		} else {
+			System.out.println("Invalid number");
+		}
+		
 		iLaboratoryService.UpdateReportStatus(ReportName, ReportStatus);
 		
 	}

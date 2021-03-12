@@ -35,6 +35,7 @@ public class laboratoryServcieImpl implements ILaboratoryService {
 	@Override
 	public void DisplayLaboratories() {
 		// TODO Auto-generated method stub
+		System.out.println("-----------------Cities--------------------");
 		System.out.println(LABORATORIES);
 		/*
 		 * for (Map.Entry<String, String> locAndTime :
@@ -70,6 +71,8 @@ public class laboratoryServcieImpl implements ILaboratoryService {
 		//Creating an arraylist to store reports status
 		ArrayList<String> Status = new ArrayList<String>();
 		
+		System.out.println("\n---------------" +status+ " Report list-------------------");
+		
 		//Get reports status
 		for (Map.Entry<String, String> ReportList : ReportsDelivery.entrySet()) {
 			if (ReportList.getValue().equalsIgnoreCase(status)) {
@@ -83,13 +86,17 @@ public class laboratoryServcieImpl implements ILaboratoryService {
 @Override
 public void AddReport(String name, String Status) {
 	
-	ReportsDelivery.put(name, Status);
-	
-	System.out.println("New report " +name+" is added with the status of : " +Status);
-	//	System.out.println("\n");
-	System.out.println("\n------------------Report List--------------------");
-	for(Map.Entry<String, String> ReportList : ReportsDelivery.entrySet()) {
-		System.out.println("Name: " + ReportList.getKey() + "\nStatus: " + ReportList.getValue() + "\n\n");
+	if (Status.equalsIgnoreCase("Delivered") || Status.equalsIgnoreCase("Not-Delivered")) {
+		ReportsDelivery.put(name, Status);
+		
+		System.out.println("New report " +name+" is added with the status of " +Status);
+		//	System.out.println("\n");
+		System.out.println("\n------------------Report List--------------------");
+		for(Map.Entry<String, String> ReportList : ReportsDelivery.entrySet()) {
+			System.out.println("Name: " + ReportList.getKey() + "\nStatus: " + ReportList.getValue() + "\n\n");
+		}		
+	}else {
+		System.out.println("Invalid Status");
 	}
 }
 
@@ -97,10 +104,14 @@ public void AddReport(String name, String Status) {
 public void DeleteReport(String name) {
 	
 	try {
-		ReportsDelivery.remove(name);
-		System.out.println("Successfully deleted the " +name+ " report ");
+		if (ReportsDelivery.containsKey(name)) {	
+			ReportsDelivery.remove(name);
+			System.out.println("Successfully deleted the " +name+ " report ");
+		}else {
+			System.out.println("Invalid report");
+		}
 	} catch (Exception e) {
-		System.out.println("Invalide Entry");
+		System.out.println("Invalid Entry");
 	}
 
 }
@@ -117,7 +128,7 @@ public void UpdateReportStatus(String name, String Status) {
 		System.out.println("Successfully Updated");
 		
 	} catch (Exception e) {
-		System.out.println("Invalide Entry");
+		System.out.println("Invalid Entry");
 	}
 	
 }
