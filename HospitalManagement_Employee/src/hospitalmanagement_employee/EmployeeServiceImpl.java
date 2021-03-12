@@ -122,8 +122,8 @@ public class EmployeeServiceImpl implements IEmployee_Service {
 					scn =  new Scanner(System.in);
 					
 					System.out.println();
-					System.out.println("1 : Add Reoprt Details ");
-					System.out.println("2 : Delete Reoprt Details ");
+					System.out.println("1 : Add Report Details ");
+					System.out.println("2 : Delete Report Details ");
 					System.out.println("0 : Exit");
 					
 					System.out.print("Choose the service : ");
