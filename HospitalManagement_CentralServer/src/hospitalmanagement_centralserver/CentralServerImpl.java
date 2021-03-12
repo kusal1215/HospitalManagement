@@ -52,8 +52,20 @@ public class CentralServerImpl implements ICentralServer {
 	public void addDoctortoSystem() {
 		// TODO Auto-generated method stub
 		doctorService.addDoctortoSystem();
-		;
 
+	}
+	
+	public void UpdateDoctorTimeSlots() {
+		
+		System.out.print("Enter Doctor Name: ");
+		String doctortName = sc.nextLine();
+		System.out.println("Please enter time:");
+		String timeSlot = sc.nextLine();
+		
+		System.out.println(doctortName +" / " + timeSlot);
+		
+		doctorService.UpdateDoctorTimeSlots(doctortName, timeSlot);;
+		
 	}
 
 	public void handleEmergencyService() {

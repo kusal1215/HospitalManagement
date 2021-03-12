@@ -95,4 +95,20 @@ public class DocotorServiceImpl implements DoctorService {
 		return  result;
 	}
 	
+	public void UpdateDoctorTimeSlots(String doctortName, String timeSlot) {
+		try {
+			for(Map.Entry<String, String> updateDoctorTimeSlot : doctors_available_time.entrySet()) {
+				if (updateDoctorTimeSlot.getKey().contains(doctortName)) {
+					doctors_available_time.replace(doctortName, timeSlot);
+				}
+			}
+			
+			System.out.println("Dr."+ doctortName + " Time Slot " + "Successfully Updated to " + timeSlot);
+			
+		} catch (Exception e) {
+			System.out.println("Invalid Entry");
+		}
+		
+	}
+	
 }

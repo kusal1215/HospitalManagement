@@ -12,4 +12,6 @@ public interface DoctorService {
 	public void addDoctortoSystem();
 	
 	public ArrayList<String> displayDoctorsAvailableTime(String doctor_name);
+	
+	public void UpdateDoctorTimeSlots(String doctortName, String timeSlot);
 }

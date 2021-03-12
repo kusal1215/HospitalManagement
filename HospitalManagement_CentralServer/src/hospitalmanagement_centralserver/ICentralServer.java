@@ -5,6 +5,7 @@ public interface ICentralServer {
 //	Hospital(doctor) Management Services
 	public void handleDocotoService();
 	public void addDoctortoSystem();
+	public void UpdateDoctorTimeSlots();
 	
 //	Emergency Management Services
 	public void handleEmergencyService();
