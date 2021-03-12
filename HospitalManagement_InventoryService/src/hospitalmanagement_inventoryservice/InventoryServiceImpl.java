@@ -38,13 +38,13 @@ public class InventoryServiceImpl implements IInventoryService {
 		drugCategory.put("Tiki Baby Bubbly Bunty Cologne 100ml - Rs.260.00", "BABYCARE");
 		drugCategory.put("Bambi premium care X-Large 4s - Rs.200.00", "BABYCARE");
 
-		drugCategory.put("Facia Day Cream Advanced Skin Whitening Formula 50g - Rs.720.00", "PersonalCare");
-		drugCategory.put("Genove Pilopeptan Anti Hair Loss Shampoo 250Ml - Rs.4,940.00", "PersonalCare");
+		drugCategory.put("Facia Day Cream Advanced Skin Whitening Formula 50g - Rs.720.00", "PERSONALCARE");
+		drugCategory.put("Genove Pilopeptan Anti Hair Loss Shampoo 250Ml - Rs.4,940.00", "PERSONALCARE");
 		drugCategory.put("SLC FACE WASH 50G - Rs.865.00", "PersonalCare");
 
-		drugCategory.put("Bones -Up 200g - Rs.800.00", "PetCare");
-		drugCategory.put("Red Dogs 200ml - Rs.865.00", "PetCare");
-		drugCategory.put("Chicken Liver Bites - Rs.700.00", "PetCare");
+		drugCategory.put("Bones -Up 200g - Rs.800.00", "PETCARE");
+		drugCategory.put("Red Dogs 200ml - Rs.865.00", "PETCARE");
+		drugCategory.put("Chicken Liver Bites - Rs.700.00", "PETCARE");
 
 	}
 
@@ -61,12 +61,9 @@ public class InventoryServiceImpl implements IInventoryService {
 	
 	@Override
 	public void DisplayCategories() {
-		System.out.println("Available Categories " + "\n");
-		System.out.println("\nNUTRACEUTICALS\nAYURVEDAL\nBABYCARE\nPersonalCare\nPetCare\n");
-		/*
-		 * for (Map.Entry<String, String> drug : drugCategory.entrySet()) {
-		 * System.out.println(drug.getValue()); }
-		 */
+		System.out.println("------------------Available Categories--------------------------");
+		System.out.println("NUTRACEUTICALS\nAYURVEDAL\nBABYCARE\nPERSONALCARE\nPETCARE\n");
+		
 		
 	}
 
@@ -81,8 +78,7 @@ public class InventoryServiceImpl implements IInventoryService {
 
 		inventoryQuantity.put(_sDname, addinventory);
 
-		System.out.println("New drug " + _sDname + " is added to the stock with a quantity of : " + addinventory + "g");
-//		System.out.println("\n");
+		System.out.println("\n New drug " + _sDname + " is added to the stock with a quantity of : " + addinventory + "g");
 	}
 
 	@Override
@@ -105,18 +101,18 @@ public class InventoryServiceImpl implements IInventoryService {
 			}
 		}
 
-		System.out.print("quantity needed (" + qty + "g): ");
+		System.out.print("quantity needed (Available Quantity: " + qty + "g): ");
 		Float quantity = scn.nextFloat();
 
 		for (Map.Entry<String, Float> inventoryItemAndReduceInventoryItem : inventoryQuantity.entrySet()) {
 			if (inventoryItemAndReduceInventoryItem.getKey().contains(drugName)) {
 				if (inventoryItemAndReduceInventoryItem.getValue() >= quantity) {
 					inventoryQuantity.replace(drugName, inventoryItemAndReduceInventoryItem.getValue() - quantity);
-					System.out.println(drugName + " (" + quantity + "g) is successfully taken out" + "\n");
-					System.out.println("Avelable Quantity: " + (qty - quantity) + "g");
+					System.out.println(drugName + " (" + quantity + "g) is successfully taken out." + "\n");
+					System.out.println("Available Quantity: " + (qty - quantity) + "g");
 					return;
 				} else {
-					System.out.println("No enough stock");
+					System.out.println("\nNo enough stock");
 					return;
 				}
 			}
@@ -129,13 +125,15 @@ public class InventoryServiceImpl implements IInventoryService {
 	@Override
 	public void getInventoryWithLessItems() {
 		// TODO Auto-generated method stub
+		System.out.println("\n-------------------------------------------------");
+		System.out.println("      drugs with stock less than 500.0g");
+		System.out.println("----------------------------------------------------");
 		for (Map.Entry<String, Float> inventoryWithLessItems : inventoryQuantity.entrySet()) {
 			if (inventoryWithLessItems.getValue() < 500.0) {
-				System.out.println(inventoryWithLessItems.getKey());
+				System.out.println("\t" +inventoryWithLessItems.getKey());
 			}
 
 		}
-//		System.out.println("\n");
 
 	}
 
@@ -144,6 +142,9 @@ public class InventoryServiceImpl implements IInventoryService {
 		// Creating an arraylist to store reports status
 		ArrayList<String> name = new ArrayList<String>();
 
+		System.out.println("\n------------------------------------------------------");
+		System.out.println("List of products for " + Name);
+		System.out.println("-------------------------------------------------------");
 		// Get reports status
 		for (Map.Entry<String, String> DrugList : drugCategory.entrySet()) {
 			if (DrugList.getValue().equalsIgnoreCase(Name)) {
@@ -158,8 +159,10 @@ public class InventoryServiceImpl implements IInventoryService {
 	public void DeleteDrugs(String Name) {
 		try {
 			drugCategory.remove(Name);
+			System.out.println(Name + " is successfully deleted" + "\n");
+			
 		} catch (Exception e) {
-			System.out.println("Invalide Entry");
+			System.out.println("Invalid Entry");
 		}
 		
 	}
