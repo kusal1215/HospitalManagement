@@ -9,5 +9,9 @@ public interface DoctorService {
 	
 	public String displaySpecializations();
 	
-
+	public void addDoctortoSystem();
+	
+	public ArrayList<String> displayDoctorsAvailableTime(String doctor_name);
+	
+	public void UpdateDoctorTimeSlots(String doctortName, String timeSlot);
 }

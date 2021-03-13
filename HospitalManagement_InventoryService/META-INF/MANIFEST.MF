@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: HospitalManagement_InventoryService
+Bundle-SymbolicName: HospitalManagement_InventoryService
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: hospitalmanagement_inventoryservice.InventoryServiceActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: HospitalManagement_InventoryService
+Import-Package: org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Export-Package: hospitalmanagement_inventoryservice

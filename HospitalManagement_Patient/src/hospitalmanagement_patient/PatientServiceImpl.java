@@ -15,7 +15,7 @@ public class PatientServiceImpl implements IPatientService {
 		
 		
 		while(true) {
-			System.out.println("01 - Find Doctors\n02 - Find An Emergancy Service\n03 - Find Lab Service\n0 - Exit\n");
+			System.out.println("01 - Find Doctors\n02 - Find An Emergancy Service\n03 - Find Lab Service\n04 - Search pharmacy products\n0 - Exit\n");
 			System.out.println("Please Select a Service :");
 			
 			try {
@@ -28,6 +28,10 @@ public class PatientServiceImpl implements IPatientService {
 					break;
 				case 2:iCentralServer.handleEmergencyService();
 					break;	
+				case 3:iCentralServer.handleLabService();
+				break;	
+				case 4:iCentralServer.getDrugList();
+				break;
 				case 0: System.exit(0);
 					break;
 				default:System.out.println("####### please select one  from the list #######\n");

@@ -1,4 +1,4 @@
-package hotelmanagement_emergencyservice;
+package hospitalmanagement_emergencyservice;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
